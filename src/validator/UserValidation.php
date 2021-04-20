@@ -1,27 +1,31 @@
 <?php
 
+
 class UserValidation {
+
+    public const FIRST_NAME_ERROR_NONE_MSG = 'Il nome è ggiusto !!';
+    public const FIRST_NAME_ERROR_REQUIRED_MSG = 'Il nome è obbligatorio';
+
     private $user;
-    private $errors = [];
+    private $errors = [] ;// Array<ValidationResult>;
     private $isValid = true;
 
     public $firstNameResult;
 
     public function __construct(User $user) {
         $this->user = $user;
+        $this->validate();
     }
 
-    public function validate()
+    private function validate()
     {   
         //$this->firstNameResult =  $this->validateFirstName();
         $result = $this->validateFirstName();
-        $this->errors['firstName'] = $result;
+        $this->errors['firstName'] = $result; //
 
-        if(!$result->isValid){
+        if(!$result->getIsValid()){
              $this->isValid = false;   
         }
-
-
     }
 
     private function validateFirstName():?ValidationResult
@@ -29,9 +33,9 @@ class UserValidation {
         $firstName = trim($this->user->getFirstName());
         
         if(empty($firstName)){
-            $validationResult = new ValidationResult('Il nome è obbligatorio',false,$firstName);
+            $validationResult = new ValidationResult(self::FIRST_NAME_ERROR_REQUIRED_MSG,false,$firstName);
         } else {
-            $validationResult = new ValidationResult('Il nome è corretto',true,$firstName);
+            $validationResult = new ValidationResult(self::FIRST_NAME_ERROR_NONE_MSG,true,$firstName);
         };
         return $validationResult;
     }
@@ -57,16 +61,4 @@ class UserValidation {
     }
 
 
-    public function getIsValid()
-    {
-        $user = $this->user;
-
-        // " "
-        return trim($user->getFirstName()) !== '' 
-        
-                && trim($user->getLastName()) !== ''
-           
-        
-        
-    }
 }
