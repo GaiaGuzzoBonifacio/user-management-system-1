@@ -27,6 +27,7 @@ class UserValidation {
     private function validateFirstName():?ValidationResult
     {
         $firstName = trim($this->user->getFirstName());
+        
         if(empty($firstName)){
             $validationResult = new ValidationResult('Il nome è obbligatorio',false,$firstName);
         } else {
@@ -55,4 +56,17 @@ class UserValidation {
         return $this->errors[$errorKey];
     }
 
+
+    public function getIsValid()
+    {
+        $user = $this->user;
+
+        // " "
+        return trim($user->getFirstName()) !== '' 
+        
+                && trim($user->getLastName()) !== ''
+           
+        
+        
+    }
 }

@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
    
    $userValidation->validate();
 
-   if($userValidation->isValid()){
+   if($userValidation->isValid()) {
        $userModel = new UserModel();
        $userModel->create($user);
 
