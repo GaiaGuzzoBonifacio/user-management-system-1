@@ -1,27 +1,25 @@
 <?php 
-if($_SERVER['REQUEST_METHOD']==='POST'){
-   $user = UserFactory::fromArray($_POST);
-   $userValidation = new UserValidation($user);
-   
-   $userValidation->validate();
+//require "autoload.php";
+require __DIR__."/vendor/testTools/testTool.php";
+require __DIR__."/src/entity/User.php";
+require __DIR__."/src/validator/UserValidation.php";
+require __DIR__."/src/validator/ValidationResult.php";
 
-   if($userValidation->isValid()) {
-       $userModel = new UserModel();
-       $userModel->create($user);
-
-       // mail($user->getEmail(),"ti sei iscritto tu ?");
-       // redirect alla conferma dell'iscrizione "grazie per esserti iscritto "
-       // user_registration_success.php
-       
-   }
-
-   $firstNameValidationResult = $userValidation->firstNameValid;
-
-}
-
+// print_r($_POST);
 if($_SERVER['REQUEST_METHOD']==='GET'){
-
+    $firstName = '';
+    $firstNameClass = '';
 }
+
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    $user = new User($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['birthday']);
+    $val = new UserValidation($user);
+    $firstNameValidation = $val->getError('firstName');
+
+    $firstName = $user->getFirstName();
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -43,9 +41,13 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
             <div class="form-group">
                <label for="">Nome</label>
                <!-- is-invalid  -->
-               <input class="form-control"  name="firstName"  type="text">
-               <div class="invalid-feedback">
-                   il nome è obbligatorio
+               <input
+                value="<?= $firstName ?>" 
+                class="form-control <?= $firstNameClass ?>"  
+                name="firstName"  
+                type="text">
+               <div class="<?= $firstNameValidation->getIsValid() ? 'valid-feedback' : 'invalid-feedback' ?>">
+                  <?= $firstNameValidation->getMessage() ?>
                </div> 
             </div>
             <div class="form-group">
