@@ -9,6 +9,8 @@ require __DIR__."/src/validator/ValidationResult.php";
 if($_SERVER['REQUEST_METHOD']==='GET'){
     $firstName = '';
     $firstNameClass = '';
+    $firstNameClassMessage = '';
+    $firstNameMessage = '';
 }
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -17,6 +19,9 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     $firstNameValidation = $val->getError('firstName');
 
     $firstName = $user->getFirstName();
+    $firstNameClass = $firstNameValidation->getIsValid() ? 'is-valid' : 'is-invalid';
+    $firstNameClassMessage = $firstNameValidation->getIsValid() ? 'valid-feedback' : 'invalid-feedback';
+    $firstNameMessage = $firstNameValidation->getMessage();
 }
 
 
@@ -46,8 +51,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
                 class="form-control <?= $firstNameClass ?>"  
                 name="firstName"  
                 type="text">
-               <div class="<?= $firstNameValidation->getIsValid() ? 'valid-feedback' : 'invalid-feedback' ?>">
-                  <?= $firstNameValidation->getMessage() ?>
+               <div class="<?= $firstNameClassMessage ?>">
+                  <?= $firstNameMessage ?>
                </div> 
             </div>
             <div class="form-group">
