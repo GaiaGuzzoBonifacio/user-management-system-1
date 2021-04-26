@@ -4,13 +4,12 @@ require __DIR__."/vendor/testTools/testTool.php";
 require __DIR__."/src/entity/User.php";
 require __DIR__."/src/validator/UserValidation.php";
 require __DIR__."/src/validator/ValidationResult.php";
-
+require __DIR__."/src/validator/bootstrap/ValidationFormHelper.php";
+// require __DIR__."/src/validator/fondation/ValidationFormHelper.php"
 // print_r($_POST);
 if($_SERVER['REQUEST_METHOD']==='GET'){
-    $firstName = '';
-    $firstNameClass = '';
-    $firstNameClassMessage = '';
-    $firstNameMessage = '';
+    list($firstName,$firstNameClass,$firstNameClassMessage,$firstNameMessage) = ValidationFormHelper::getDefault();
+    
 }
 
 if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -18,10 +17,17 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     $val = new UserValidation($user);
     $firstNameValidation = $val->getError('firstName');
 
-    $firstName = $user->getFirstName();
-    $firstNameClass = $firstNameValidation->getIsValid() ? 'is-valid' : 'is-invalid';
-    $firstNameClassMessage = $firstNameValidation->getIsValid() ? 'valid-feedback' : 'invalid-feedback';
-    $firstNameMessage = $firstNameValidation->getMessage();
+    list($firstName,$firstNameClass,$firstNameClassMessage,$firstNameMessage) = ValidationFormHelper::getValidationClass($firstNameValidation);
+
+    if($val->getIsValid()){
+        //TODO
+        echo "salva l'utente";
+    }
+
+    // $firstName = $user->getFirstName();
+    // $firstNameClass = $firstNameValidation->getIsValid() ? 'is-valid' : 'is-invalid';
+    // $firstNameClassMessage = $firstNameValidation->getIsValid() ? 'valid-feedback' : 'invalid-feedback';
+    // $firstNameMessage = $firstNameValidation->getMessage();
 }
 
 
