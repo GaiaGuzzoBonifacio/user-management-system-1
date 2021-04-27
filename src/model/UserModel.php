@@ -12,6 +12,7 @@ class UserModel
     {
         try {
             $this->conn = new PDO('mysql:dbname=corso_formarete;host=localhost', 'root', '');
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             // TODO: togliere echo
             echo $e->getMessage();
@@ -35,6 +36,7 @@ class UserModel
         } catch (\PDOException $e) {
             // TODO: Evitare echo
             echo $e->getMessage();
+            
         
         }
     }

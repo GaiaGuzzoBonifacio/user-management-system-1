@@ -1,3 +1,26 @@
+
+  # Validazine
+  - [ ] completare la validazione del **User**
+      - [ ] lastName
+      - [ ] email 
+      - [ ] valore predefinito per la data   
+  
+  # Model
+  - [ ] Finire il Model
+    - [ ] update (modifica)
+    - [ ] readAll (elenco di tutti gli utenti)
+    - [ ] readOne (dati di un solo utente) 
+    - [ ] delete (cancellazione di un utente)
+
+ # Pagina con elenco utenti
+  PAGINE (controller)
+  - Elenco degli utenti **list_user.php**
+  
+  
+  
+  
+  --------------------------------------------------
+  
   qualcuno a premuto aggiungi
      - [ ] creo un istanza User
      - [ ] Effettuo la validazione è sanificazione dei valori dell'istanza di User
