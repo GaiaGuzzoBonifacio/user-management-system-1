@@ -1,10 +1,13 @@
 <?php 
 //require "autoload.php";
-require __DIR__."/vendor/testTools/testTool.php";
-require __DIR__."/src/entity/User.php";
-require __DIR__."/src/validator/UserValidation.php";
-require __DIR__."/src/validator/ValidationResult.php";
-require __DIR__."/src/validator/bootstrap/ValidationFormHelper.php";
+//require __DIR__."/vendor/testTools/testTool.php";
+
+use sarassoroberto\usm\entity\User;
+use sarassoroberto\usm\validator\bootstrap\ValidationFormHelper;
+use sarassoroberto\usm\validator\UserValidation;
+
+require "./__autoload.php";
+
 // require __DIR__."/src/validator/fondation/ValidationFormHelper.php"
 // print_r($_POST);
 if($_SERVER['REQUEST_METHOD']==='GET'){

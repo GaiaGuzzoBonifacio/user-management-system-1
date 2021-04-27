@@ -10,13 +10,10 @@
 
 // sarassoroberto\usm\validator\bootstrap\ValidationFormHelper;
 // src/validator/bootstrap/ValidationFormHelper.php;
-
-use sarassoroberto\usm\entity\User;
-
 spl_autoload_register(function($className){
     $classPath = str_replace("sarassoroberto\usm",__DIR__."\src",$className);
     $classPath = str_replace("\\",DIRECTORY_SEPARATOR,$classPath).".php";
-    // echo $classPath;
+    //echo $classPath."<br>";
     require $classPath;
     
 });
