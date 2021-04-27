@@ -1,4 +1,7 @@
 <?php
+namespace sarassoroberto\usm\validator\bootstrap;
+
+use sarassoroberto\usm\validator\ValidationResult;
 
 class ValidationFormHelper {
 

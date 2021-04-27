@@ -1,4 +1,7 @@
 <?php
+namespace sarassoroberto\usm\model;
+use \PDO;
+use sarassoroberto\usm\entity\User;
 
 class UserModel
 {
@@ -45,5 +48,6 @@ class UserModel
     }
     public function delete()
     {
+
     }
 }

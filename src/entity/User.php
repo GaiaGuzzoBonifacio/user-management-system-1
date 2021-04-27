@@ -1,5 +1,8 @@
 <?php
-namespace entity;
+namespace sarassoroberto\usm\entity; //PSR-4 - autoloading
+ // namespace app\usm\entity;
+// namespace src\entity;
+
 class User {
 
     private $userId;

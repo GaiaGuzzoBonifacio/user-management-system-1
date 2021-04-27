@@ -1,4 +1,6 @@
 <?php
+namespace sarassoroberto\usm\validator;
+
 /**
  *  + message: string
     + isValid: bool

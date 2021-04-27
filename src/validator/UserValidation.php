@@ -1,5 +1,7 @@
 <?php
 
+namespace sarassoroberto\usm\validator;
+use sarassoroberto\usm\entity\User;
 
 class UserValidation {
 
@@ -37,7 +39,7 @@ class UserValidation {
     private function validateFirstName():?ValidationResult
     {
         $firstName = trim($this->user->getFirstName());
-        
+
         if(empty($firstName)){
             $validationResult = new ValidationResult(self::FIRST_NAME_ERROR_REQUIRED_MSG,false,$firstName);
         } else {
