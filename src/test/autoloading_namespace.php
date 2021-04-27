@@ -4,7 +4,7 @@ use entity\User;
 
 spl_autoload_register(function($className){
     echo "sto cercando la classe $className\n\n";
-
+    //DIRECTORY_SEPARATOR
     require __DIR__."/../$className.php";
     
 
