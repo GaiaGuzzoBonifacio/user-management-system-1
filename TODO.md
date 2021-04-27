@@ -7,10 +7,12 @@
   
   # Model
   - [ ] Finire il Model
-    - [ ] update (modifica)
-    - [ ] readAll (elenco di tutti gli utenti)
-    - [ ] readOne (dati di un solo utente) 
-    - [ ] delete (cancellazione di un utente)
+    - [ ] **UserModel::readAll()** (elenco di tutti gli utenti)
+    $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
+      NOTA: 
+    - [ ] **User::delete($user_id)** (cancellazione di un utente)
+    - [ ] **UserModel::readOne($user_id)** (dati di un solo utente) 
+    - [ ] **User::update(User $user)**update (modifica)
 
  # Pagina con elenco utenti
   PAGINE (controller)
