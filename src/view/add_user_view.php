@@ -17,12 +17,19 @@
                </div> 
             </div>
             <div class="form-group">
-                <label for="">Cognome</label>
-                <input class="form-control" name="lastName" type="text">
-                <div class="invalid-feedback">
-                    il cognome è obbligatorio
-                </div> 
-             </div>
+               <label for="">Cognome</label>
+               <!-- is-invalid  -->
+               <input
+                value="<?= $lastName ?>" 
+                class="form-control <?= $lastNameClass ?>"  
+                name="lastName"  
+                type="text">
+               <div class="<?= $lastNameClassMessage ?>">
+                  <?= $lastNameMessage ?>
+               </div> 
+            </div>
+
+
              <div class="form-group">
                 <label for="">email</label>
                 <input class="form-control"  name="email" type="text"> 

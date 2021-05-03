@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
 
     print_r($val);
     list($firstName, $firstNameClass, $firstNameClassMessage, $firstNameMessage) = ValidationFormHelper::getValidationClass($firstNameValidation);
+    list($lastName, $lastNameClass, $lastNameClassMessage, $lastNameMessage) = ValidationFormHelper::getValidationClass($lastNameValidation);
 
     if ($val->getIsValid()) {
         //TODO
