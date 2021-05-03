@@ -44,7 +44,7 @@
 
              <div class="form-group">
                 <label for="">data di nascita</label>
-                <input class="form-control <?= $birthdayClass ?>" name="birthday" type="date">
+                <input class="form-control <?= $birthdayClass ?>" value="<?= $birthday ?>" name="birthday" type="date">
                 <div class="<?= $birthdayClassMessage ?>">
                   <?= $birthdayMessage ?>
                </div> 

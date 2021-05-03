@@ -12,7 +12,7 @@ class UserValidation {
     public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
 
     public const BIRTHDAY_ERROR_FORMAT_DATE = 'Il formato della data non è valido';
-    public const BIRTHDAY_NONE = '';
+    public const BIRTHDAY_NONE = 'data vuota';
     public const BIRTHDAY_ERROR_NONE_MSG = 'Il formato della data è corretto';
 
     private $user;
@@ -70,17 +70,17 @@ class UserValidation {
     private function validateBirthday():?ValidationResult
     {
         $date = trim($this->user->getBirthday());
-
+print_r($_POST);
         if(empty($date)){
             return new ValidationResult(self::BIRTHDAY_NONE, true, NULL);
         }else{
             // TODO: da testare validateDate e da spostare in una classe fatta solo di validatori
             // Validator::isValidDate('2000-02-1') per esempio
             if($this->validateDate($date)){
-                return new ValidationResult(self::BIRTHDAY_ERROR_NONE_MSG, true, NULL);
+                return new ValidationResult(self::BIRTHDAY_ERROR_NONE_MSG, true, $date);
 
             }else{
-                return new ValidationResult(self::BIRTHDAY_NONE, true, NULL);
+                return new ValidationResult(self::BIRTHDAY_ERROR_FORMAT_DATE, true, $date);
             }
         }
      
