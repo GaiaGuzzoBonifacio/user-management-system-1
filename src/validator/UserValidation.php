@@ -8,6 +8,9 @@ class UserValidation {
     public const FIRST_NAME_ERROR_NONE_MSG = 'Il nome è ggiusto !!';
     public const FIRST_NAME_ERROR_REQUIRED_MSG = 'Il nome è obbligatorio';
 
+    public const LAST_NAME_ERROR_NONE_MSG = 'Il cognome è ggiusto !!';
+    public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
+
     private $user;
     private $errors = [] ;// Array<ValidationResult>;
     private $isValid = true;
@@ -23,8 +26,8 @@ class UserValidation {
     {   
         //$this->firstNameResult =  $this->validateFirstName();
         $this->errors['firstName']  = $this->validateFirstName();
-        //$this->errors['lastName']  = $this->validateLastName();
-        //$this->errors['birthday']  = $this->validateBirt();
+        $this->errors['lastName']  = $this->validateLastName();
+        $this->errors['birthday']  = $this->validateBirt();
 
     }
 
@@ -48,6 +51,18 @@ class UserValidation {
         return $validationResult;
     }
 
+    private function validateLastName():?ValidationResult
+    {
+        $lastName = trim($this->user->getLastName());
+
+        if(empty($lastName)){
+            $validationResult = new ValidationResult(self::LAST_NAME_ERROR_REQUIRED_MSG,false,$lastName);
+        } else {
+            $validationResult = new ValidationResult(self::LAST_NAME_ERROR_NONE_MSG,true,$lastName);
+        };
+        return $validationResult;
+    }
+
     /**
      *  foreach($userValidation->getErrors() as $error ){
      *   echo "<li</li>"
@@ -60,7 +75,7 @@ class UserValidation {
     }
 
     /**
-     * $userValidation->getError('firstName');
+     * $userValidation->getError('lastName');
      * @var ValidationResult $errorKey Chiave associativa che contiene un ValidationResult corrispondente
      */
     public function getError($errorKey)
