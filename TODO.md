@@ -16,12 +16,12 @@
 
     $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
       NOTA: 
-    - [/] **User::delete($user_id)** (cancellazione di un utente)
+    - [x] **User::delete($user_id)** (cancellazione di un utente)
 
   > NOTE: Come faccio a sapere se ho veramente cancellato qualcosa ?
   > https://www.php.net/manual/en/pdostatement.rowcount.php
 
-    - [ ] **UserModel::readOne($user_id)** (dati di un solo utente) 
+    - [/] **UserModel::readOne($user_id)** (dati di un solo utente) 
     - [ ] **User::update(User $user)**update (modifica)
 
  # Pagina con elenco utenti TASK-3
