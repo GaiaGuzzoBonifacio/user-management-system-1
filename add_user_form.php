@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday']);
     $val = new UserValidation($user);
     $firstNameValidation = $val->getError('firstName');
+    $lastNameValidation = $val->getError('lastName');
 
+    print_r($val);
     list($firstName, $firstNameClass, $firstNameClassMessage, $firstNameMessage) = ValidationFormHelper::getValidationClass($firstNameValidation);
 
     if ($val->getIsValid()) {
