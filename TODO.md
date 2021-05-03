@@ -9,7 +9,7 @@
   - [ ] Finire il Model
     - a.[/] **UserModel::readAll()** (elenco di tutti gli utenti)
 
-  > FIX: 
+  > FIX: argomenti di User
   > too few arguments to function sarassoroberto\usm\entity\User::__construct(), 0 passed and exactly 4 expected i
   > UserModel.php on line 49
   > https://phpdelusions.net/pdo/objects#parameters
