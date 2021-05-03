@@ -10,17 +10,18 @@
         <th>cognome</th>
         <th>action</th>
     </tr>
-
-    <tr>
-        <td>10</td>
+    <?php foreach($model->readAll() as $user ){ ?>
+        <tr>
+        <td><?= $user->getUserId() ?></td>
         <td>Roberto</td>
         <td>Rossi</td>
         <td>
-            <a href="#" class="btn btn-secondary">edit </a>
-            <a href="delete_user.php?user_id=10" class="btn btn-danger">delete </a>
+        <a href="#" class="btn btn-secondary">edit </a>
+        <a href="delete_user.php?user_id=10" class="btn btn-danger">delete </a>
         </td>
-    </tr>
-
+        </tr>
+    <?php } ?>
+        
 </table>
 
 

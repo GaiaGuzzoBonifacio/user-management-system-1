@@ -1,5 +1,5 @@
 
-  # Validazine TASK-1
+  # Validazione TASK-1
   - [ ] completare la validazione del **User**
       - [ ] lastName
       - [ ] email 
@@ -7,7 +7,13 @@
   
   # Model TASK-2
   - [ ] Finire il Model
-    - a.[x] **UserModel::readAll()** (elenco di tutti gli utenti)
+    - a.[/] **UserModel::readAll()** (elenco di tutti gli utenti)
+
+  > FIX: 
+  > too few arguments to function sarassoroberto\usm\entity\User::__construct(), 0 passed and exactly 4 expected i
+  > UserModel.php on line 49
+  > https://phpdelusions.net/pdo/objects#parameters
+
     $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
       NOTA: 
     - [ ] **User::delete($user_id)** (cancellazione di un utente)

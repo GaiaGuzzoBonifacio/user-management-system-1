@@ -46,7 +46,7 @@ class UserModel
     {
         $pdostm = $this->conn->prepare('SELECT * FROM User;');
         $pdostm->execute();
-        return $pdostm->fetchAll(PDO::FETCH_CLASS);
+        return $pdostm->fetchAll(PDO::FETCH_CLASS,User::class);
     }
     public function update()
     {
