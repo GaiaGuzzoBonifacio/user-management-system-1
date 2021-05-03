@@ -48,6 +48,27 @@ class UserModel
         $pdostm->execute();
         return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
     }
+
+    public function readOne($user_id)
+    {
+        try {
+            $sql = "Select * from User where userId=:user_id";
+            $pdostm = $this->conn->prepare($sql);
+            $pdostm->bindValue('user_id', $user_id, PDO::PARAM_INT);
+            $pdostm->execute();
+            $result = $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
+
+            return count($result) === 0 ? null : $result[0];
+
+        } catch (\Throwable $th) {
+            
+            echo "qualcosa è andato storto";
+            echo " ". $th->getMessage();
+            //throw $th;
+        }
+    }
+
+
     public function update()
     {
     }

@@ -9,10 +9,10 @@
   - [ ] Finire il Model
     - a.[x] **UserModel::readAll()** (elenco di tutti gli utenti)
 
-  > FIX: argomenti di User
-  > too few arguments to function sarassoroberto\usm\entity\User::__construct(), 0 passed and exactly 4 expected i
+  > FIX: argomenti di User nel costruttore
+  > too few arguments to function sarassoroberto\usm\entity\User::__construct(), 0 passed and exactly 4 expected 
   > UserModel.php on line 49
-  > FIXED: https://phpdelusions.net/pdo/objects#parameters
+  > TO FIXED SEE: https://phpdelusions.net/pdo/objects#parameters
 
     $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
       NOTA: 
@@ -21,8 +21,11 @@
   > NOTE: Come faccio a sapere se ho veramente cancellato qualcosa ?
   > https://www.php.net/manual/en/pdostatement.rowcount.php
 
-    - [/] **UserModel::readOne($user_id)** (dati di un solo utente) 
-    - [ ] **User::update(User $user)**update (modifica)
+    - [x] **UserModel::readOne($user_id)** (dati di un solo utente) 
+  
+  > FIX: argomenti di User nel costruttore (vedi sopra)
+  
+    - [ ] **User::update(User $user)** update (modifica)
 
  # Pagina con elenco utenti TASK-3
   PAGINE (controller)
