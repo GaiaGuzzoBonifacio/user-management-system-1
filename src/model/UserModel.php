@@ -42,14 +42,20 @@ class UserModel
     }
 
 
-    public function read()
+    public function readAll()
     {
+        $sql = "select * from User;";
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->execute();
+
+        //$pdostm->fetchAll(PDO::FETCH_CLASS,'sarassoroberto\usm\entity\User');
+        return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class, ['','','','']);
     }
     public function update()
     {
     }
     public function delete($id)
     {
-
+        echo "cancellero id $id";
     }
 }
