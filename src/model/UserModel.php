@@ -54,5 +54,25 @@ class UserModel
     public function delete($id)
     {
 
+        try {
+            $pdostm = $this->conn->prepare('DELETE FROM User where userId=:id;');
+            $pdostm->bindValue(':id',$id, PDO::PARAM_INT);
+            $pdostm->execute();
+            $count = $pdostm->rowCount();
+
+            
+            /** @see https://www.php.net/manual/en/pdostatement.rowcount.php */
+            var_dump($count);
+            if($count === 1){
+                return true;
+            }else{
+                return false;
+            }
+    
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th->getMessage();
+        }
+  
     }
 }
