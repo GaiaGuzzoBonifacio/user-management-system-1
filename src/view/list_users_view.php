@@ -13,8 +13,8 @@
     <?php foreach($model->readAll() as $user ){ ?>
         <tr>
         <td><?= $user->getUserId() ?></td>
-        <td>Roberto</td>
-        <td>Rossi</td>
+        <td><?= $user->getFirstName()?></td>
+        <td><?= $user->getLastName() ?></td>
         <td>
         <a href="#" class="btn btn-secondary">edit </a>
         <a href="delete_user.php?user_id=10" class="btn btn-danger">delete </a>
