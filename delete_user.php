@@ -11,5 +11,14 @@ $user_id = filter_input(INPUT_GET,'user_id',FILTER_SANITIZE_NUMBER_INT);
 
 var_dump($user_id);
 echo "<h1>$user_id</h1>";
+
 $userModel = new UserModel();
-$userModel->delete($user_id);
+if($userModel->delete($user_id) === true){
+    echo "cancellato";
+}else{
+    echo "utente non esiste o gia elminato";
+};
+
+
+
+// header("location: list_users.php");

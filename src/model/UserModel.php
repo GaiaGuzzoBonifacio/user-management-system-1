@@ -54,8 +54,24 @@ class UserModel
     public function update()
     {
     }
-    public function delete($id)
+
+    public function delete(int $user_id):bool
     {
-        echo "cancellero id $id";
+        $sql = "delete from User where userId=:user_id ";
+        
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->bindValue(':user_id',$user_id,PDO::PARAM_INT);
+        $pdostm->execute();
+
+        
+        if($pdostm->rowCount() === 0) {
+            return false;
+        } else if($pdostm->rowCount() === 1){
+            return true;
+        }
+    //    else {
+    //         throw ;
+    //     }; 
+
     }
 }
