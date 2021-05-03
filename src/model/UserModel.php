@@ -42,8 +42,11 @@ class UserModel
     }
 
 
-    public function read()
+    public function readAll()
     {
+        $pdostm = $this->conn->prepare('SELECT * FROM User;');
+        $pdostm->execute();
+        return $pdostm->fetchAll(PDO::FETCH_CLASS);
     }
     public function update()
     {

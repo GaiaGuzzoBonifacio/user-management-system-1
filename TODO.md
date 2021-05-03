@@ -1,22 +1,22 @@
 
-  # Validazine
+  # Validazine TASK-1
   - [ ] completare la validazione del **User**
       - [ ] lastName
       - [ ] email 
       - [ ] valore predefinito per la data   
   
-  # Model
+  # Model TASK-2
   - [ ] Finire il Model
-    - [ ] **UserModel::readAll()** (elenco di tutti gli utenti)
+    - a.[x] **UserModel::readAll()** (elenco di tutti gli utenti)
     $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
       NOTA: 
     - [ ] **User::delete($user_id)** (cancellazione di un utente)
     - [ ] **UserModel::readOne($user_id)** (dati di un solo utente) 
     - [ ] **User::update(User $user)**update (modifica)
 
- # Pagina con elenco utenti
+ # Pagina con elenco utenti TASK-3
   PAGINE (controller)
-  - Elenco degli utenti **list_user.php**
+  - a.[x] Elenco degli utenti **list_user.php**
   
   
   
