@@ -16,7 +16,7 @@
         <td><?= $user->getFirstName()?></td>
         <td><?= $user->getLastName() ?></td>
         <td>
-        <a href="#" class="btn btn-secondary">edit </a>
+        <a href="edit_user.php?user_id=10" class="btn btn-secondary">edit </a>
         <a href="delete_user.php?user_id=10" class="btn btn-danger">delete </a>
         </td>
         </tr>
