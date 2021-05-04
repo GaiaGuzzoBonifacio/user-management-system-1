@@ -12,8 +12,6 @@ class UserModel
     public function __construct()
     {
         try {
-            # prima di introdurre appConfig
-            //$this->conn = new PDO('mysql:dbname='.AppConfig::DB_NAME.';host='.AppConfig::DB_HOST, AppConfig::DB_USER, AppConfig::DB_PASSWORD);
             $this->conn = new PDO('mysql:dbname='.AppConfig::DB_NAME.';host='.AppConfig::DB_HOST, AppConfig::DB_USER, AppConfig::DB_PASSWORD);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
@@ -84,6 +82,13 @@ class UserModel
         $pdostm->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $pdostm->bindValue(':birthday', $user->getBirthday(), PDO::PARAM_STR);
         $pdostm->bindValue(':user_id',$user->getUserId());
+        $pdostm->execute();
+
+        if($pdostm->rowCount() === 0) {
+            return false;
+        } else if($pdostm->rowCount() === 1){
+            return true;
+        }
     }
 
     public function delete(int $user_id):bool
@@ -100,29 +105,9 @@ class UserModel
         } else if($pdostm->rowCount() === 1){
             return true;
         }
-    //    else {
-    //         throw ;
-    //     }; 
 
-        try {
-            $pdostm = $this->conn->prepare('DELETE FROM User where userId=:id;');
-            $pdostm->bindValue(':id',$id, PDO::PARAM_INT);
-            $pdostm->execute();
-            $count = $pdostm->rowCount();
 
-            
-            /** @see https://www.php.net/manual/en/pdostatement.rowcount.php */
-            var_dump($count);
-            if($count === 1){
-                return true;
-            }else{
-                return false;
-            }
-    
-        } catch (\Throwable $th) {
-            //throw $th;
-            echo $th->getMessage();
-        }
+      
   
     }
 }
