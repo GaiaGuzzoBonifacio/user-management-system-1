@@ -11,9 +11,13 @@ class UserValidation {
     public const LAST_NAME_ERROR_NONE_MSG = 'Il cognome è ggiusto !!';
     public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
 
-    public const BIRTHDAY_ERROR_FORMAT_DATE = 'Il formato della data non è valido';
-    public const BIRTHDAY_NONE = 'data vuota';
+    public const BIRTHDAY_ERROR_FORMAT_MSG = 'Il formato della data non è valido';
+    public const BIRTHDAY_NONE_MSG = 'data vuota';
     public const BIRTHDAY_ERROR_NONE_MSG = 'Il formato della data è corretto';
+    
+    public const EMAIL_ERROR_FORMAT_MSG = 'Il formato dell\'email non è valido';
+    public const EMAIL_ERROR_REQUIRED_MSG = 'La mail è obbligatoria';
+    public const EMAIL_ERROR_NONE_MSG = 'Il formato della email è corretto';
 
     private $user;
     private $errors = [] ;// Array<ValidationResult>;
@@ -31,6 +35,7 @@ class UserValidation {
         //$this->firstNameResult =  $this->validateFirstName();
         $this->errors['firstName']  = $this->validateFirstName();
         $this->errors['lastName']  = $this->validateLastName();
+        $this->errors['email']  = $this->validateEmail();
         $this->errors['birthday']  = $this->validateBirthday();
 
     }
@@ -70,20 +75,38 @@ class UserValidation {
     private function validateBirthday():?ValidationResult
     {
         $date = trim($this->user->getBirthday());
-print_r($_POST);
         if(empty($date)){
-            return new ValidationResult(self::BIRTHDAY_NONE, true, NULL);
+            // la mail non è obbligatoria quindi se è vuota restituico un messaggio positivo
+            return new ValidationResult(self::EMAIL_ERROR_FORMAT_MSG, true, NULL);
         }else{
-            // TODO: da testare validateDate e da spostare in una classe fatta solo di validatori
-            // Validator::isValidDate('2000-02-1') per esempio
             if($this->validateDate($date)){
                 return new ValidationResult(self::BIRTHDAY_ERROR_NONE_MSG, true, $date);
-
             }else{
-                return new ValidationResult(self::BIRTHDAY_ERROR_FORMAT_DATE, true, $date);
+                return new ValidationResult(self::BIRTHDAY_ERROR_FORMAT_MSG, true, $date);
             }
         }
      
+    }
+
+    private function validateEmail():?ValidationResult
+    {
+        $email = $this->user->getEmail();
+        if(empty($email)){
+            return new ValidationResult(self::EMAIL_ERROR_REQUIRED_MSG, false, $email);
+            //return true;
+        } else {
+
+            $validateEmail = filter_var($email,FILTER_VALIDATE_EMAIL);
+            
+            if($validateEmail === false)
+            {
+                return new ValidationResult(self::EMAIL_ERROR_FORMAT_MSG, false, $email);
+            }
+            else {
+                return new ValidationResult(self::EMAIL_ERROR_NONE_MSG, true, $email);
+            }
+            
+        } 
     }
 
     /**
