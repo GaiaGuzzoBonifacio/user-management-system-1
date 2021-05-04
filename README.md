@@ -18,12 +18,14 @@ sul **branch versione-finale** c'è la versione con modifica, inserimento, cance
 esiste un file dove dovete configurare il database secondo 
 
 # configurare usando LE VOSTRE IMPOSTAZIONI  
+
+file: [./src/config/local/AppConfig.php](./src/config/local/AppConfig.php)
 ```php
 class AppConfig {
-const DB_PASSWORD = '';
-const DB_USER = 'root';
-const DB_NAME = 'corso_formarete';
-const DB_HOST = 'localhost';
+    const DB_PASSWORD = '';
+    const DB_USER = 'root';
+    const DB_NAME = 'corso_formarete';
+    const DB_HOST = 'localhost';
 }
 ```
 
