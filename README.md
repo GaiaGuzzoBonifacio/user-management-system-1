@@ -32,7 +32,7 @@ class AppConfig {
 
 dopo eseguendo il file nella root, via browser o via cli
 
-> install-demo.php 
+> [install-demo.php](https://github.com/corsidrive/user-management-system/blob/versione-finale/install-demo.php) 
 
 verrà creato il database di prova e una serie di utenti
 
