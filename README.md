@@ -17,20 +17,23 @@ sul **branch versione-finale** c'è la versione con modifica, inserimento, cance
 
 esiste un file dove dovete configurare il database secondo 
 
-# LE VOSTRE IMPOSTAZIONI 
-
-> class AppConfig {
-> const DB_PASSWORD = '';
-> const DB_USER = 'root';
-> const DB_NAME = 'corso_formarete';
-> const DB_HOST = 'localhost';
-
+# configurare usando LE VOSTRE IMPOSTAZIONI  
+```php
+class AppConfig {
+const DB_PASSWORD = '';
+const DB_USER = 'root';
+const DB_NAME = 'corso_formarete';
+const DB_HOST = 'localhost';
+}
+```
 
 dopo eseguendo il file nella root, via browser o via cli
 
 > install-demo.php 
 
 verrà creato il database di prova e una serie di utenti
+
+
 
 ## enjoy ❤
 
