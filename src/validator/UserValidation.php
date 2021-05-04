@@ -12,7 +12,7 @@ class UserValidation {
     public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
 
     public const BIRTHDAY_ERROR_FORMAT_MSG = 'Il formato della data non è valido';
-    public const BIRTHDAY_NONE_MSG = 'data vuota';
+    public const BIRTHDAY_NONE_MSG = '';
     public const BIRTHDAY_ERROR_NONE_MSG = 'Il formato della data è corretto';
     
     public const EMAIL_ERROR_FORMAT_MSG = 'Il formato dell\'email non è valido';
@@ -77,7 +77,7 @@ class UserValidation {
         $date = trim($this->user->getBirthday());
         if(empty($date)){
             // la mail non è obbligatoria quindi se è vuota restituico un messaggio positivo
-            return new ValidationResult(self::EMAIL_ERROR_FORMAT_MSG, true, NULL);
+            return new ValidationResult(self::BIRTHDAY_NONE_MSG, true, NULL);
         }else{
             if($this->validateDate($date)){
                 return new ValidationResult(self::BIRTHDAY_ERROR_NONE_MSG, true, $date);

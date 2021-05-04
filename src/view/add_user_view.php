@@ -53,19 +53,20 @@
                   <?= $birthdayMessage ?>
                </div> 
              </div>
-             <?php if(isset($userid)) { ?>
-
+            <!-- quando gli utenti vengono creati non hanno ancora un id, quindi non ha bisogno del campo nascosto -->
+             <?php if(isset($userId)) { ?>
+               <!-- invece quando sono in modifica di un utente -->
                <div class="form-group mt-4 p-4 border border-danger">
                <label for="">
-                  Questo campo è visibile per spiegare il sistema <br> 
-                  serve a inviare via post, <b>User::userId</b> da aggiornare.
+                  Questo campo è visibile motivi didattici in realtà dovrebbe essere un <b>input[type=hidden]</b> <br> 
+                  serve a inviare via post, <b>User::userId</b> dell'istanza dell'utente da aggiornare <br>
                </label>
-               <input type="text" class="form-control">
+               <input type="text" name="userId" value="<?= $userId ?>" class="form-control">
              </div>
 
              <?php } ?>
              
-             <button class="btn btn-primary mt-3" type="submit">Aggiungi</button>
+             <button class="btn btn-primary mt-3" type="submit"><?= $submit ?></button>
         </form>
     </div>
     

@@ -39,8 +39,7 @@ class UserModel
         } catch (\PDOException $e) {
             // TODO: Evitare echo
             echo $e->getMessage();
-            
-        
+
         }
     }
 
@@ -72,7 +71,7 @@ class UserModel
     }
 
 
-    public function update()
+    public function update($user)
     {
         $sql = "UPDATE User set firstName=:firstName, 
                                 lastName=:lastName,

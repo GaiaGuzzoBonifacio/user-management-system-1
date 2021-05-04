@@ -8,6 +8,8 @@ require "./__autoload.php";
 
 /** $action rappresentà l'indirizzo a cui verranno inviati i dati del form */
 $action = './add_user_form.php';
+$submit = 'aggiungi nuovo utente';
+
 if($_SERVER['REQUEST_METHOD']==='GET'){
     
     /** Il form viene compilato "vuoto" */
@@ -31,11 +33,13 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     list($email, $emailClass, $emailClassMessage, $emailMessage) = ValidationFormHelper::getValidationClass($emailValidation);
     list($birthday, $birthdayClass, $birthdayClassMessage, $birthdayMessage) = ValidationFormHelper::getValidationClass($birthdayValidation);
 
+    $user->setBirthday($birthday);
+
     if ($val->getIsValid()) {
-        //TODO
+        // TODO
         $userModel = new UserModel();
         $userModel->create($user);
-       // header('location: ./list_users.php');
+        header('location: ./list_users.php');
     }
 }
 
