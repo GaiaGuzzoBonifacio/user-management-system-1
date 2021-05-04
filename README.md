@@ -24,3 +24,14 @@ esiste un file dove dovete configurare il database secondo
 > const DB_USER = 'root';
 > const DB_NAME = 'corso_formarete';
 > const DB_HOST = 'localhost';
+
+
+dopo eseguendo il file nella root, via browser o via cli
+
+> install-demo.php 
+
+verrà creato il database di prova e una serie di utenti
+
+## enjoy ❤
+
+
