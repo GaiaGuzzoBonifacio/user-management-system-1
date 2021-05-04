@@ -13,6 +13,8 @@ ci sono dei ragionamenti lasciati à metà sulla mofifica dell'utente.
 
 ---
 ### [Guarda questo video](https://drive.google.com/file/d/1_NqRP3Y1pAP4IfarFZD4M4lSYTiGNTZ-/view) 
+
+<iframe src="https://drive.google.com/file/d/1_NqRP3Y1pAP4IfarFZD4M4lSYTiGNTZ-/preview" width="640" height="480"></iframe>
 ---
 
 sul **branch versione-finale** c'è la versione con modifica, inserimento, cancellazione, creazione funzionanti
