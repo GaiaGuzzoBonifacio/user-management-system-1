@@ -1,6 +1,9 @@
 <?php
-// logica controller per ottenere elenco degli utenti
+require "./__autoload.php";
+use sarassoroberto\usm\model\UserModel;
+
+$model = new UserModel();
 
 
-include './src/view/list_users_view.php'
+include './src/view/list_users_view.php';
 ?>

@@ -42,14 +42,58 @@ class UserModel
     }
 
 
-    public function read()
+    public function readAll()
     {
+        $pdostm = $this->conn->prepare('SELECT * FROM User;');
+        $pdostm->execute();
+        return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
     }
+
+    public function readOne($user_id)
+    {
+        try {
+            $sql = "Select * from User where userId=:user_id";
+            $pdostm = $this->conn->prepare($sql);
+            $pdostm->bindValue('user_id', $user_id, PDO::PARAM_INT);
+            $pdostm->execute();
+            $result = $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
+
+            return count($result) === 0 ? null : $result[0];
+
+        } catch (\Throwable $th) {
+            
+            echo "qualcosa è andato storto";
+            echo " ". $th->getMessage();
+            //throw $th;
+        }
+    }
+
+
     public function update()
     {
     }
     public function delete($id)
     {
 
+        try {
+            $pdostm = $this->conn->prepare('DELETE FROM User where userId=:id;');
+            $pdostm->bindValue(':id',$id, PDO::PARAM_INT);
+            $pdostm->execute();
+            $count = $pdostm->rowCount();
+
+            
+            /** @see https://www.php.net/manual/en/pdostatement.rowcount.php */
+            var_dump($count);
+            if($count === 1){
+                return true;
+            }else{
+                return false;
+            }
+    
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th->getMessage();
+        }
+  
     }
 }
