@@ -14,6 +14,9 @@ $action = './add_user_form.php';
 // print_r($_POST);
 if($_SERVER['REQUEST_METHOD']==='GET'){
     list($firstName,$firstNameClass,$firstNameClassMessage,$firstNameMessage) = ValidationFormHelper::getDefault();
+    list($lastName,$lastNameClass,$lastNameClassMessage,$lastNameMessage) = ValidationFormHelper::getDefault();
+    list($email,$emailClass,$emailClassMessage,$emailMessage) = ValidationFormHelper::getDefault();
+    list($birthday,$birthdayClass,$birthdayClassMessage,$birthdayMessage) = ValidationFormHelper::getDefault();
     
 }
 
