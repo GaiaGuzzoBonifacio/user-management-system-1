@@ -19,6 +19,4 @@ if($userModel->delete($user_id) === true){
     echo "utente non esiste o gia elminato";
 };
 
-
-
-// header("location: list_users.php");
+header("location: list_users.php");
