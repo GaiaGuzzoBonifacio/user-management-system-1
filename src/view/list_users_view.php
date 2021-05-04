@@ -22,7 +22,7 @@
         <td><?= $user->getFirstName() ?></td>
         <td><?php echo $user->getLastName() ?></td>
         <td>
-            <a href="#" class="btn btn-secondary">edit </a>
+            <a href="edit_user.php?user_id=<?= $user->getUserId() ?>" class="btn btn-secondary">edit </a>
             <a href="delete_user.php?user_id=<?= $user->getUserId() ?>" class="btn btn-danger">delete </a>
         </td>
     </tr>

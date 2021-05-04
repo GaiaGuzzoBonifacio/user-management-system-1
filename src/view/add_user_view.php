@@ -3,7 +3,8 @@
     <?php include './src/view/header.php' ?>
     
     <div class="container">
-        <form action="add_user_form.php" method="POST">
+        <!-- <form action="add_user_form.php" method="POST"> -->
+        <form action="<?= $action ?>" method="POST">
             <div class="form-group">
                <label for="">Nome</label>
                <!-- is-invalid  -->
@@ -37,6 +38,8 @@
                 <label for="">data di nascita</label>
                 <input class="form-control" name="birthday" type="date">
              </div>
+             id
+             <input type="text" >
              <button class="btn btn-primary mt-3" type="submit">Aggiungi</button>
         </form>
     </div>

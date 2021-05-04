@@ -51,8 +51,19 @@ class UserModel
         //$pdostm->fetchAll(PDO::FETCH_CLASS,'sarassoroberto\usm\entity\User');
         return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class, ['','','','']);
     }
-    public function update()
+    public function update(User $user)
     {
+        $sql = "UPDATE User set firstName=:firstName, 
+                                lastName=:lastName,
+                                email=:email,
+                                birthday=:birthday
+                                where userId=:user_id;";
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->bindValue(':firstName', $user->getFirstName(), PDO::PARAM_STR);
+        $pdostm->bindValue(':lastName', $user->getLastName(), PDO::PARAM_STR);
+        $pdostm->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
+        $pdostm->bindValue(':birthday', $user->getBirthday(), PDO::PARAM_STR);
+        $pdostm->bindValue(':user_id',$user->getUserId());
     }
 
     public function delete(int $user_id):bool
