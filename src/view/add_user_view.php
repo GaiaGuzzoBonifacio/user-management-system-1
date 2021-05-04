@@ -17,12 +17,19 @@
                </div> 
             </div>
             <div class="form-group">
-                <label for="">Cognome</label>
-                <input class="form-control" name="lastName" type="text">
-                <div class="invalid-feedback">
-                    il cognome è obbligatorio
-                </div> 
-             </div>
+               <label for="">Cognome</label>
+               <!-- is-invalid  -->
+               <input
+                value="<?= $lastName ?>" 
+                class="form-control <?= $lastNameClass ?>"  
+                name="lastName"  
+                type="text">
+               <div class="<?= $lastNameClassMessage ?>">
+                  <?= $lastNameMessage ?>
+               </div> 
+            </div>
+
+
              <div class="form-group">
                 <label for="">email</label>
                 <input class="form-control"  name="email" type="text"> 
@@ -33,9 +40,14 @@
                     email obbligatoria
                 </div>
              </div>
+
+
              <div class="form-group">
                 <label for="">data di nascita</label>
-                <input class="form-control" name="birthday" type="date">
+                <input class="form-control <?= $birthdayClass ?>" value="<?= $birthday ?>" name="birthday" type="date">
+                <div class="<?= $birthdayClassMessage ?>">
+                  <?= $birthdayMessage ?>
+               </div> 
              </div>
              <button class="btn btn-primary mt-3" type="submit">Aggiungi</button>
         </form>
