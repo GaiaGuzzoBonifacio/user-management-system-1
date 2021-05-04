@@ -1,6 +1,7 @@
 <?php
 namespace sarassoroberto\usm\model;
 use \PDO;
+use sarassoroberto\usm\config\local\AppConfig;
 use sarassoroberto\usm\entity\User;
 
 class UserModel
@@ -11,7 +12,9 @@ class UserModel
     public function __construct()
     {
         try {
-            $this->conn = new PDO('mysql:dbname=corso_formarete;host=localhost', 'root', '');
+            # prima di introdurre appConfig
+            //$this->conn = new PDO('mysql:dbname='.AppConfig::DB_NAME.';host='.AppConfig::DB_HOST, AppConfig::DB_USER, AppConfig::DB_PASSWORD);
+            $this->conn = new PDO('mysql:dbname='.AppConfig::DB_NAME.';host='.AppConfig::DB_HOST, AppConfig::DB_USER, AppConfig::DB_PASSWORD);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e) {
             // TODO: togliere echo
@@ -71,9 +74,36 @@ class UserModel
 
     public function update()
     {
+        $sql = "UPDATE User set firstName=:firstName, 
+                                lastName=:lastName,
+                                email=:email,
+                                birthday=:birthday
+                                where userId=:user_id;";
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->bindValue(':firstName', $user->getFirstName(), PDO::PARAM_STR);
+        $pdostm->bindValue(':lastName', $user->getLastName(), PDO::PARAM_STR);
+        $pdostm->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
+        $pdostm->bindValue(':birthday', $user->getBirthday(), PDO::PARAM_STR);
+        $pdostm->bindValue(':user_id',$user->getUserId());
     }
-    public function delete($id)
+
+    public function delete(int $user_id):bool
     {
+        $sql = "delete from User where userId=:user_id ";
+        
+        $pdostm = $this->conn->prepare($sql);
+        $pdostm->bindValue(':user_id',$user_id,PDO::PARAM_INT);
+        $pdostm->execute();
+
+        
+        if($pdostm->rowCount() === 0) {
+            return false;
+        } else if($pdostm->rowCount() === 1){
+            return true;
+        }
+    //    else {
+    //         throw ;
+    //     }; 
 
         try {
             $pdostm = $this->conn->prepare('DELETE FROM User where userId=:id;');

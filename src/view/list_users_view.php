@@ -1,6 +1,11 @@
 <?php include './src/view/head.php' ?> 
 <?php include './src/view/header.php' ?>
 
+<?php
+
+
+
+?>
 <div class="container">
 
 <table class="table">

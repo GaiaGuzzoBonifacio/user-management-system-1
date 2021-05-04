@@ -9,6 +9,7 @@ use sarassoroberto\usm\validator\UserValidation;
 
 require "./__autoload.php";
 
+$action = './add_user_form.php';
 // require __DIR__."/src/validator/fondation/ValidationFormHelper.php"
 // print_r($_POST);
 if($_SERVER['REQUEST_METHOD']==='GET'){
