@@ -15,11 +15,12 @@ sul **branch versione-finale** c'è la versione con modifica, inserimento, cance
 
 > $ git clone -b versione-finale https://github.com/corsidrive/user-management-system.git usm_versione_finale
 
-esiste un file dove dovete configurare il database secondo 
 
 # configurare usando LE VOSTRE IMPOSTAZIONI  
 
+esiste un file dove dovete configurare il database 
 file: [./src/config/local/AppConfig.php](./src/config/local/AppConfig.php)
+
 ```php
 class AppConfig {
     const DB_PASSWORD = '';
