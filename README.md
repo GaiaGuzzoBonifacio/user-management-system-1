@@ -13,4 +13,14 @@ ci sono dei ragionamenti lasciati à metà sulla mofifica dell'utente.
 
 sul **branch versione-finale** c'è la versione con modifica, inserimento, cancellazione, creazione funzionanti
 
-> $ git clone -b version-finale https://github.com/corsidrive/user-management-system.git usm_versione_finale
+> $ git clone -b versione-finale https://github.com/corsidrive/user-management-system.git usm_versione_finale
+
+esiste un file dove dovete configurare il database secondo 
+
+# LE VOSTRE IMPOSTAZIONI 
+
+> class AppConfig {
+> const DB_PASSWORD = '';
+> const DB_USER = 'root';
+> const DB_NAME = 'corso_formarete';
+> const DB_HOST = 'localhost';
