@@ -8,7 +8,7 @@ class UserModel
 {
 
     private $conn;
-
+    
     public function __construct()
     {
         try {
@@ -105,9 +105,5 @@ class UserModel
         } else if($pdostm->rowCount() === 1){
             return true;
         }
-
-
-      
-  
     }
 }
