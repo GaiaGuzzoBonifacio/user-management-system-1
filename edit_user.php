@@ -1,5 +1,6 @@
 <?php 
 use sarassoroberto\usm\entity\User;
+use sarassoroberto\usm\factory\UserFactory;
 use sarassoroberto\usm\model\UserModel;
 use sarassoroberto\usm\validator\bootstrap\ValidationFormHelper;
 use sarassoroberto\usm\validator\UserValidation;
@@ -30,7 +31,8 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
 if ($_SERVER['REQUEST_METHOD']==='POST') {
     
     $userId = filter_input(INPUT_POST,'userId',FILTER_SANITIZE_NUMBER_INT);
-    $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday']);
+    // $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday']);
+    $user = UserFactory::fromArray($_POST);
     // Imposto anche l'id che deve corrispondere a quello dell'utente che sto modificando
     $user->setUserId($userId);
 
