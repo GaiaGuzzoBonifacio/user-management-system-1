@@ -22,4 +22,27 @@ class UserSession {
             unset($_SESSION['user_autenticated'])  ;
         }
     }
+
+    public function isAutenticated()
+    {
+        if(isset($_SESSION['user_autenticated'])) {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
+    public function logOut()
+    {
+        //session_destroy()
+        unset($_SESSION['user_autenticated']);
+    }
+    public function redirect()
+    {
+        if(!$this->isAutenticated()){
+            header('location: login_user.php');
+        }
+    }
+    
 }

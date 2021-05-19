@@ -3,9 +3,11 @@
 
 use sarassoroberto\usm\service\UserSession;
 
+// print_r(scandir('../'));
 
-require __DIR__."/../../__autoload.php";
-require __DIR__."/../../vendor/testTools/testTool.php";
+
+require "../../__autoload.php";
+require "../../vendor/testTools/testTool.php";
 
 $us = new UserSession();
 
