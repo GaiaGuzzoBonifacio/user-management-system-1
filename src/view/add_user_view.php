@@ -53,6 +53,14 @@
                   <?= $birthdayMessage ?>
                </div> 
              </div>
+
+             <div class="form-group">
+                <label for="">password</label>
+                <input class="form-control <?= $passwordClass ?>" value="<?= $password ?>" name="password" type="text">
+                <div class="<?= $passwordClassMessage ?>">
+                  <?= $passwordMessage ?>
+               </div> 
+             </div>
             <!-- quando gli utenti vengono creati non hanno ancora un id, quindi non ha bisogno del campo nascosto -->
              <?php if(isset($userId)) { ?>
                <!-- invece quando sono in modifica di un utente -->

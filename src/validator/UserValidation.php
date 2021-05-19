@@ -7,6 +7,9 @@ class UserValidation {
 
     public const FIRST_NAME_ERROR_NONE_MSG = 'Il nome è ggiusto !!';
     public const FIRST_NAME_ERROR_REQUIRED_MSG = 'Il nome è obbligatorio';
+    
+    public const PASSWORD_ERROR_NONE_MSG = '';
+    public const PASSWORD_ERROR_REQUIRED_MSG = 'Password è obbligatoria';
 
     public const LAST_NAME_ERROR_NONE_MSG = 'Il cognome è ggiusto !!';
     public const LAST_NAME_ERROR_REQUIRED_MSG = 'Il cognome è obbligatorio';
@@ -37,6 +40,7 @@ class UserValidation {
         $this->errors['lastName']  = $this->validateLastName();
         $this->errors['email']  = $this->validateEmail();
         $this->errors['birthday']  = $this->validateBirthday();
+        $this->errors['password']  = $this->validatePassword();
 
     }
 
@@ -68,6 +72,18 @@ class UserValidation {
             $validationResult = new ValidationResult(self::LAST_NAME_ERROR_REQUIRED_MSG,false,$lastName);
         } else {
             $validationResult = new ValidationResult(self::LAST_NAME_ERROR_NONE_MSG,true,$lastName);
+        };
+        return $validationResult;
+    }
+
+    private function validatePassword():?ValidationResult
+    {
+        $password = trim($this->user->getPassword());
+
+        if(empty($password) && empty($this->user->getUserId())){
+            $validationResult = new ValidationResult(self::PASSWORD_ERROR_REQUIRED_MSG,false,$password);
+        } else {
+            $validationResult = new ValidationResult(self::PASSWORD_ERROR_NONE_MSG,true,$password);
         };
         return $validationResult;
     }
