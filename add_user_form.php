@@ -1,7 +1,4 @@
 <?php 
-//require "autoload.php";
-//require __DIR__."/vendor/testTools/testTool.php";
-
 use sarassoroberto\usm\entity\User;
 use sarassoroberto\usm\model\UserModel;
 use sarassoroberto\usm\validator\bootstrap\ValidationFormHelper;
@@ -9,26 +6,40 @@ use sarassoroberto\usm\validator\UserValidation;
 
 require "./__autoload.php";
 
+/** $action rappresentà l'indirizzo a cui verranno inviati i dati del form */
 $action = './add_user_form.php';
-// require __DIR__."/src/validator/fondation/ValidationFormHelper.php"
-// print_r($_POST);
+$submit = 'aggiungi nuovo utente';
+
 if($_SERVER['REQUEST_METHOD']==='GET'){
-    list($firstName,$firstNameClass,$firstNameClassMessage,$firstNameMessage) = ValidationFormHelper::getDefault();
     
+    /** Il form viene compilato "vuoto" */
+    list($firstName,$firstNameClass,$firstNameClassMessage,$firstNameMessage) = ValidationFormHelper::getDefault();
+    list($lastName,$lastNameClass,$lastNameClassMessage,$lastNameMessage) = ValidationFormHelper::getDefault();
+    list($email,$emailClass,$emailClassMessage,$emailMessage) = ValidationFormHelper::getDefault();
+    list($birthday,$birthdayClass,$birthdayClassMessage,$birthdayMessage) = ValidationFormHelper::getDefault();    
 }
 
 if ($_SERVER['REQUEST_METHOD']==='POST') {
+
     $user = new User($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['birthday']);
     $val = new UserValidation($user);
     $firstNameValidation = $val->getError('firstName');
+    $lastNameValidation = $val->getError('lastName');
+    $emailValidation = $val->getError('email');
+    $birthdayValidation = $val->getError('birthday');
 
     list($firstName, $firstNameClass, $firstNameClassMessage, $firstNameMessage) = ValidationFormHelper::getValidationClass($firstNameValidation);
+    list($lastName, $lastNameClass, $lastNameClassMessage, $lastNameMessage) = ValidationFormHelper::getValidationClass($lastNameValidation);
+    list($email, $emailClass, $emailClassMessage, $emailMessage) = ValidationFormHelper::getValidationClass($emailValidation);
+    list($birthday, $birthdayClass, $birthdayClassMessage, $birthdayMessage) = ValidationFormHelper::getValidationClass($birthdayValidation);
+
+    $user->setBirthday($birthday);
 
     if ($val->getIsValid()) {
-        //TODO
+        // TODO
         $userModel = new UserModel();
         $userModel->create($user);
-       // header('location: ./list_users.php');
+        header('location: ./list_users.php');
     }
 }
 

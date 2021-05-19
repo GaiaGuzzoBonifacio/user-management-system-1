@@ -1,43 +1,18 @@
+https://www.edureka.co/blog/decrypt-md5-password-PHP/
 
-  # Validazione TASK - 1
-  - [ ] completare la validazione del **User**
-      - [ ] lastName
-      - [ ] email 
-      - [ ] valore predefinito per la data   
-  
-  # Model TASK - 2
-  - [/] Finire il Model
-    - [/] **UserModel::readAll()** (elenco di tutti gli utenti)
-    $result = $stm->fetchAll(PDO::FETCH_CLASS,User::class); // UserFactory
-      NOTA: 
-    - [ ] **User::delete($user_id)** (cancellazione di un utente)
-    - [ ] **UserModel::readOne($user_id)** (dati di un solo utente) 
-    - [ ] **User::update(User $user)**update (modifica)
+- Aggiungere la password
+  - [ ] aggiungere attributo password nel database
+  - [ ] aggiungere campo password nel form
+  - [ ] aggiungere proprietà password alla classe User
 
- # Pagina con elenco utenti
-  PAGINE (controller)
-  - Elenco degli utenti **list_user.php**
-  
-  
-  
-  
-  --------------------------------------------------
-  
-  qualcuno a premuto aggiungi
-     - [ ] creo un istanza User
-     - [ ] Effettuo la validazione è sanificazione dei valori dell'istanza di User
-     - [ ] se tutto è ok salvo l'utente --> si va a una pagina di conferma
-                 [ ] Istanza del model uso il metodo create 
-     - [ ] se non è tutto ok rimango sul form e segnalo gli errori
+  - Impostare la mail come  chiave unica nella tabella degli utenti. 
+  - how to set unique key in mysql 
 
-     per ogni errore / campo
-     *firstName "Mario" *lastName vuoto
-     rimango nel form
-     *firstName "MArio" *lasName 
-      Risultato della validazione
-                           - messaggio "campo obbligatorio"
-      isValid = true       - isValid = false 
-                           - code
-      valore 
-      ''
-      "Mario"              - ''
+<!-- - Quando crei un nuovo utente si cripta la password -->
+
+- [ ] Implementare la schermata di logIn
+    - [ ]  **login_user.php** controller
+    - [ ]  form inserisco email/username / password
+    - [ ]  implementare **UserModel::autenticate($username,$password):?User**
+    - [ ]  se l'utente esiste accedo all'elenco degli utenti
+

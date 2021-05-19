@@ -8,7 +8,7 @@ class UserModel
 {
 
     private $conn;
-
+    
     public function __construct()
     {
         try {
@@ -37,22 +37,39 @@ class UserModel
         } catch (\PDOException $e) {
             // TODO: Evitare echo
             echo $e->getMessage();
-            
-        
+
         }
     }
 
 
     public function readAll()
     {
-        $sql = "select * from User;";
-        $pdostm = $this->conn->prepare($sql);
+        $pdostm = $this->conn->prepare('SELECT * FROM User;');
         $pdostm->execute();
-
-        //$pdostm->fetchAll(PDO::FETCH_CLASS,'sarassoroberto\usm\entity\User');
-        return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class, ['','','','']);
+        return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
     }
-    public function update(User $user)
+
+    public function readOne($user_id)
+    {
+        try {
+            $sql = "Select * from User where userId=:user_id";
+            $pdostm = $this->conn->prepare($sql);
+            $pdostm->bindValue('user_id', $user_id, PDO::PARAM_INT);
+            $pdostm->execute();
+            $result = $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,User::class,['','','','']);
+
+            return count($result) === 0 ? null : $result[0];
+
+        } catch (\Throwable $th) {
+            
+            echo "qualcosa è andato storto";
+            echo " ". $th->getMessage();
+            //throw $th;
+        }
+    }
+
+
+    public function update($user)
     {
         $sql = "UPDATE User set firstName=:firstName, 
                                 lastName=:lastName,
@@ -65,6 +82,13 @@ class UserModel
         $pdostm->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
         $pdostm->bindValue(':birthday', $user->getBirthday(), PDO::PARAM_STR);
         $pdostm->bindValue(':user_id',$user->getUserId());
+        $pdostm->execute();
+
+        if($pdostm->rowCount() === 0) {
+            return false;
+        } else if($pdostm->rowCount() === 1){
+            return true;
+        }
     }
 
     public function delete(int $user_id):bool
@@ -81,9 +105,5 @@ class UserModel
         } else if($pdostm->rowCount() === 1){
             return true;
         }
-    //    else {
-    //         throw ;
-    //     }; 
-
     }
 }
