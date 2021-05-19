@@ -5,6 +5,12 @@
 <div class="container">
 <div id="login">
         
+        <?php if(isset($msg)) : ?>
+
+                <div class="alert alert-danger m-4"><?= $msg ?></div>
+
+        <?php endif ?>
+
         <div class="pt-5">
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-4">
@@ -12,8 +18,8 @@
                         <form id="login-form" class="form" action="login_user.php" method="post">
                             <h3 class="text-center">Login</h3>
                             <div class="form-group pt-3">
-                                <label for="username">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <label for="email">Email</label><br>
+                                <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="form-group pt-3">
                                 <label for="password">Password:</label><br>
