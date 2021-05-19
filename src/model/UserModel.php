@@ -45,6 +45,8 @@ class UserModel
     {
         $pdostm = $this->conn->prepare('SELECT * FROM User;');
         $pdostm->execute();
+        //$result = $pdostm->fetchAll();
+        // $user = array_map('Userfactory::fromArray',$result);
         return $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class, ['','','','','']);
     }
 
