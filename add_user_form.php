@@ -41,11 +41,15 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     $user->setBirthday($birthday);
 
     if ($val->getIsValid()) {
-        
-        // TODO
-        $userModel = new UserModel();
-        $userModel->create($user);
-        header('location: ./list_users.php');
+        try {
+             // TODO
+            $userModel = new UserModel();
+            $userModel->create($user);
+            header('location: ./list_users.php');
+        } catch (\Throwable $th) {
+            $msg = "{$th->getCode()} - Esiste già un utente con questa email: <strong>$email</strong>";
+        }
+       
     }
 }
 

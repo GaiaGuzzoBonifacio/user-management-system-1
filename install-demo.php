@@ -25,7 +25,7 @@ $sql = "DROP DATABASE if exists $dbname;
             UNIQUE INDEX `email` (`email`)
         )";
 
-// $conn->exec($sql);
+$conn->exec($sql);
 
 $users = JSONReader::openFile(__DIR__.'/__dataset/demo.json');
 foreach ($users as $key => $user) {

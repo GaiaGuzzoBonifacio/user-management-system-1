@@ -3,6 +3,13 @@
     <?php include './src/view/header.php' ?>
     
     <div class="container">
+
+      <?php if(isset($msg)) : ?>
+
+         <div class="alert alert-danger m-4"><?= $msg ?></div>
+
+      <?php endif ?>
+
         <!-- <form action="add_user_form.php" method="POST"> -->
         <form class="mt-4" action="<?= $action ?>" method="POST">
             <div class="form-group">
@@ -54,6 +61,7 @@
                </div> 
              </div>
 
+             <?php if(empty($userId)) : ?>  
              <div class="form-group">
                 <label for="">password</label>
                 <input class="form-control <?= $passwordClass ?>" value="<?= $password ?>" name="password" type="text">
@@ -61,8 +69,10 @@
                   <?= $passwordMessage ?>
                </div> 
              </div>
-            <!-- quando gli utenti vengono creati non hanno ancora un id, quindi non ha bisogno del campo nascosto -->
+             <?php endif ?>
+
              <?php if(isset($userId)) { ?>
+            <!-- quando gli utenti vengono creati non hanno ancora un id, quindi non ha bisogno del campo nascosto -->
                <!-- invece quando sono in modifica di un utente -->
                <div class="form-group mt-4 p-4 border border-danger">
                <label class="text-danger">
