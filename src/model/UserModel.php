@@ -109,4 +109,24 @@ class UserModel
             return true;
         }
     }
+
+
+
+    public function findByEmail(string $email):?User
+    {
+        try {
+            $sql = "Select * from User where email=:email";
+            $pdostm = $this->conn->prepare($sql);
+            $pdostm->bindValue('email', $email, PDO::PARAM_INT);
+            $pdostm->execute();
+            $result = $pdostm->fetchAll(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, User::class, ['','','','']);
+
+            return count($result) === 0 ? null : $result[0];
+            
+        } catch (\Throwable $th) {
+            echo "qualcosa è andato storto";
+            echo " ". $th->getMessage();
+            //throw $th;
+        }
+    }
 }
