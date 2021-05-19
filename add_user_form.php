@@ -17,6 +17,7 @@ if($_SERVER['REQUEST_METHOD']==='GET'){
     list($lastName,$lastNameClass,$lastNameClassMessage,$lastNameMessage) = ValidationFormHelper::getDefault();
     list($email,$emailClass,$emailClassMessage,$emailMessage) = ValidationFormHelper::getDefault();
     list($birthday,$birthdayClass,$birthdayClassMessage,$birthdayMessage) = ValidationFormHelper::getDefault();    
+    list($birthday,$birthdayClass,$birthdayClassMessage,$birthdayMessage) = ValidationFormHelper::getDefault();    
 }
 
 if ($_SERVER['REQUEST_METHOD']==='POST') {

@@ -25,13 +25,14 @@ class UserModel
     {
 
         try {
-            $pdostm = $this->conn->prepare('INSERT INTO User (firstName,lastName,email,birthday)
-            VALUES (:firstName,:lastName,:email,:birthday);');
+            $pdostm = $this->conn->prepare('INSERT INTO User (firstName,lastName,email,birthday,password)
+            VALUES (:firstName,:lastName,:email,:birthday,:password);');
 
             $pdostm->bindValue(':firstName', $user->getFirstName(), PDO::PARAM_STR);
             $pdostm->bindValue(':lastName', $user->getLastName(), PDO::PARAM_STR);
             $pdostm->bindValue(':email', $user->getEmail(), PDO::PARAM_STR);
             $pdostm->bindValue(':birthday', $user->getBirthday(), PDO::PARAM_STR);
+            $pdostm->bindValue(':password', password_hash($user->getPassword(), PASSWORD_ARGON2I), PDO::PARAM_STR);
 
             $pdostm->execute();
         } catch (\PDOException $e) {

@@ -5,8 +5,8 @@ https://www.edureka.co/blog/decrypt-md5-password-PHP/
   - [ ] aggiungere campo password nel form
   - [ ] aggiungere proprietà password alla classe User
 
-  - Impostare la mail come  chiave unica nella tabella degli utenti. 
-  - how to set unique key in mysql 
+  - [ ] Impostare la mail come  chiave unica nella tabella degli utenti. 
+    - [ ] how to set unique key in mysql 
 
 <!-- - Quando crei un nuovo utente si cripta la password -->
 
