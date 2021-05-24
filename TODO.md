@@ -17,6 +17,7 @@ User n --- m Interesse
 
 - Creare la tabella Interesse(InteresseId,nome)
 - Creare la tabella User_Interesse(UserId,InteresseId)
+- Chiave unica per User_Interesse unique(UserId,InteresseId) (facoltativo)
 
 - Creare il CRUD (InteresseModel)
 
