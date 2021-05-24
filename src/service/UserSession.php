@@ -23,7 +23,7 @@ class UserSession {
         }
     }
 
-    public function isAutenticated()
+    public function isAutenticated()// :bool
     {
         if(isset($_SESSION['user_autenticated'])) {
             return true;
@@ -38,6 +38,7 @@ class UserSession {
         //session_destroy()
         unset($_SESSION['user_autenticated']);
     }
+
     public function redirect()
     {
         if(!$this->isAutenticated()){
