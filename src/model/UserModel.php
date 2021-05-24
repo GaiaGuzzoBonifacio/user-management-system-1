@@ -34,6 +34,11 @@ class UserModel
             $pdostm->bindValue(':password', password_hash($user->getPassword(), PASSWORD_ARGON2I), PDO::PARAM_STR);
 
             $pdostm->execute();
+
+            // Come ottenere id di un utente appena creato
+            // perchè devo inserire id dell'utente nella tabella n:n
+            // User_Interesse  
+
         } catch (\PDOException $e) {
             // TODO: Evitare echo
             throw $e;
