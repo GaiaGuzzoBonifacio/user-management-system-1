@@ -19,7 +19,8 @@ class UserSession {
             $_SESSION['user_autenticated'] = $user;
             return $user;
         }else{
-            unset($_SESSION['user_autenticated'])  ;
+            //unset($_SESSION['user_autenticated'])  ;
+            $this->logOut();
         }
     }
 

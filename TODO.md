@@ -20,6 +20,7 @@ User n --- m Interesse
 - Chiave unica per User_Interesse unique(UserId,InteresseId) (facoltativo)
 
 - Creare il CRUD (InteresseModel)
+- Creare UI (user interface) per elencare, modificare, creare, cancellare gli interessi come abbiamo fatto per gli utenti.
 
 # Modificare il CRUD degli utenti 
 
