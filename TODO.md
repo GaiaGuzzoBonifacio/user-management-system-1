@@ -1,3 +1,11 @@
+# Integrare UserSession
+
+- se non sono autenticato non posso vedere nessuna pagina
+- se sono autenticato posso vedere tutte le pagine
+- inserire un link di logout nel [header.php](src/view/header.php)
+
+
+
 Integrare la UserSession al al vostro script
 
 - [ ] Inserire la password criptata
