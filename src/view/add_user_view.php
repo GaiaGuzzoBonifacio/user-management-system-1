@@ -71,6 +71,24 @@
              </div>
              <?php endif ?>
 
+             <div class="form-group">
+               <label for="">Scegli il tuo interesse: </label>
+                  <select name="Interesse">
+                     <option value="">
+                        --- Select ---
+                     </option>
+                     <?php foreach($voce->readAll() as $interesse ){ ?>
+                     <option value="<?= $interesse-> getInteresseId() ?>">
+                        <?= $interesse-> getNome()?>
+                     </option>
+                     <option value=""></option>
+                     <option value=""></option>
+                     
+                  </select>
+                  <?php } ?>
+             </div>
+
+
              <?php if(isset($userId)) { ?>
             <!-- quando gli utenti vengono creati non hanno ancora un id, quindi non ha bisogno del campo nascosto -->
                <!-- invece quando sono in modifica di un utente -->
