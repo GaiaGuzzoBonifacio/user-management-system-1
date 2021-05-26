@@ -6,7 +6,7 @@
 
 
 
-Integrare la UserSession al al vostro script
+Integrare la UserSession al vostro script
 
 - [ ] Inserire la password criptata
 - [ ] [UserSession](src/service/UserSession.php)
