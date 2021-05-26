@@ -142,7 +142,7 @@ class UserModel
         $user = $this->findByEmail($email);
         if(!is_null($user)) {
             $passwordHash = $user->getPassword();
-            return password_verify($password,$passwordHash) ? $user : null;
+            return $password == $passwordHash ? $user : null;
         }
         return null;
     }

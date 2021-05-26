@@ -12,7 +12,12 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
     if($email && $password){
         $user = (new UserSession())->autenticate($email,$password);
         
-        if(is_null($user)){ $msg = "credenziali errate"; }else{
+        if(is_null($user)) { 
+            
+            $msg = "credenziali errate"; 
+            
+        }else{
+
             header("location: list_users.php");
         }
     }else{

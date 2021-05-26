@@ -10,7 +10,7 @@ class UserSession {
     }
 
 
-    public function autenticate(string $email,string $password)
+    public function autenticate(string $email, string $password)
     {
         $um = new UserModel();
         $user = $um->autenticate($email,$password);

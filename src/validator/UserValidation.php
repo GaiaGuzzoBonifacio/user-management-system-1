@@ -84,7 +84,7 @@ class UserValidation {
             $validationResult = new ValidationResult(self::PASSWORD_ERROR_REQUIRED_MSG,false,$password);
         } else {
             $validationResult = new ValidationResult(self::PASSWORD_ERROR_NONE_MSG,true,$password);
-        };
+        }
         return $validationResult;
     }
 
